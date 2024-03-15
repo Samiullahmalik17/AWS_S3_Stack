@@ -11,7 +11,11 @@ exports.handler = async (event) => {
 
     // Generate thumbnail
     const thumbnailKey = sourceKey.replace(/\.(jpeg|jpg|png)$/i, '_thumb.jpg');
-    const thumbnailObject = await sharp(record.s3.object.key)
+    const object = await s3.getObject({
+      Bucket: sourceBucketName,
+      Key: sourceKey,
+    }).promise();
+    const thumbnailObject = await sharp(object.Body)
       .resize({ width: 100 })
       .toBuffer();
 

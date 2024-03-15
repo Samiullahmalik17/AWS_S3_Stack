@@ -14,12 +14,14 @@ export class HelloStackStack extends cdk.Stack {
 
     // Create source bucket
     const sourceBucket = new s3.Bucket(this, 'SourceBucket', {
-      removalPolicy: cdk.RemovalPolicy.DESTROY // Change to RETAIN if you want to keep the bucket when stack is deleted
+      removalPolicy: cdk.RemovalPolicy.DESTROY,
+      versioned: true, 
     });
 
     // Create destination bucket for thumbnails
     const thumbnailsBucket = new s3.Bucket(this, 'ThumbnailsBucket', {
-      removalPolicy: cdk.RemovalPolicy.DESTROY // Change to RETAIN if you want to keep the bucket when stack is deleted
+      removalPolicy: cdk.RemovalPolicy.DESTROY,
+      versioned: true, 
     });
 
     // Create Lambda function to generate thumbnails
@@ -29,7 +31,6 @@ export class HelloStackStack extends cdk.Stack {
       code: aws_lambda.Code.fromAsset('lambda'), // Assuming your aws_lambda code is in a 'aws_lambda' directory
       environment: {
         THUMBNAILS_BUCKET_NAME: thumbnailsBucket.bucketName,
-        DESTINATION_BUCKET_NAME: thumbnailsBucket.bucketName
 
       }
     });

@@ -2,6 +2,11 @@
  "Resources": {
   "SourceBucketDDD2130A": {
    "Type": "AWS::S3::Bucket",
+   "Properties": {
+    "VersioningConfiguration": {
+     "Status": "Enabled"
+    }
+   },
    "UpdateReplacePolicy": "Delete",
    "DeletionPolicy": "Delete",
    "Metadata": {
@@ -71,6 +76,11 @@
   },
   "ThumbnailsBucket2EC3D1A5": {
    "Type": "AWS::S3::Bucket",
+   "Properties": {
+    "VersioningConfiguration": {
+     "Status": "Enabled"
+    }
+   },
    "UpdateReplacePolicy": "Delete",
    "DeletionPolicy": "Delete",
    "Metadata": {
@@ -204,14 +214,11 @@
      "S3Bucket": {
       "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
      },
-     "S3Key": "3eb33ea21f3a3175f6bcf8e14498bf53cab4873107bccbdcfd05894eb7fde374.zip"
+     "S3Key": "2ad88da32c0310577dc1522a3120ba0cf6143994965fb759f6432ff460eaec83.zip"
     },
     "Environment": {
      "Variables": {
       "THUMBNAILS_BUCKET_NAME": {
-       "Ref": "ThumbnailsBucket2EC3D1A5"
-      },
-      "DESTINATION_BUCKET_NAME": {
        "Ref": "ThumbnailsBucket2EC3D1A5"
       }
      }
@@ -231,7 +238,7 @@
    ],
    "Metadata": {
     "aws:cdk:path": "HelloStackStack/ThumbnailFunction/Resource",
-    "aws:asset:path": "asset.3eb33ea21f3a3175f6bcf8e14498bf53cab4873107bccbdcfd05894eb7fde374",
+    "aws:asset:path": "asset.2ad88da32c0310577dc1522a3120ba0cf6143994965fb759f6432ff460eaec83",
     "aws:asset:is-bundled": false,
     "aws:asset:property": "Code"
    }
